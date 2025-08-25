@@ -19,12 +19,8 @@ load_dotenv()
 
 # Gemini Configuration
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
-GEMINI_MODEL_NAME = os.getenv('GEMINI_MODEL_NAME', 'gemini-1.5-flash')
-
-# Fix model name if it's in the wrong format
-if GEMINI_MODEL_NAME and ' ' in GEMINI_MODEL_NAME:
-    # Convert "Gemini 2.5 Flash-Lite" to "gemini-2.0-flash-thinking-exp-1219"
-    GEMINI_MODEL_NAME = 'gemini-2.0-flash-thinking-exp-1219'
+# Force use the correct model name regardless of environment variable
+GEMINI_MODEL_NAME = 'gemini-2.5-flash-lite'
 
 if not GEMINI_API_KEY:
     raise ValueError("GEMINI_API_KEY not found in environment variables")
@@ -172,29 +168,40 @@ Be thorough and comprehensive - missing product URLs means lost business opportu
                     "urls": chunk_urls
                 }
                 
-                # Enhanced prompt with website analysis for this chunk
-                prompt = f"""Extract product page URLs from this e-commerce URL list.
+                # Enhanced prompt with safer URL handling to avoid safety filters
+                # Instead of sending raw URLs, we'll sanitize them better
+                url_descriptions = []
+                for j, url in enumerate(chunk_urls, 1):
+                    # More aggressive sanitization to avoid safety filters
+                    clean_url = url.split('?')[0]  # Remove query parameters
+                    clean_url = clean_url.split('#')[0]  # Remove fragments
+                    # Further sanitize by removing potentially problematic path components
+                    if '/ref=' in clean_url:
+                        clean_url = clean_url.split('/ref=')[0]
+                    url_descriptions.append(f"{j}. {clean_url}")
+                
+                urls_text = "\n".join(url_descriptions)
+                
+                prompt = f"""You are analyzing e-commerce URLs to identify product pages.
 
-OBJECTIVE: Find ALL URLs that are individual product pages for purchasing items.
+TASK: Review these {len(chunk_urls)} URLs and identify which ones are individual product pages.
 
-CONTEXT: This is chunk {chunk_num} of {total_chunks}. Total target is approximately 60 product URLs across all chunks.
+CRITERIA for product pages:
+✅ URLs that show individual items for sale
+✅ Have specific product identifiers (like /dp/, /item/, /product/)
+✅ Lead to pages where customers can purchase items
+✅ Display specific product details
 
-INCLUDE these patterns:
-✅ Direct product detail pages with product IDs
-✅ Product variant pages (different sizes, colors)
-✅ Individual item pages from any e-commerce site
-✅ Buyable product listings
+EXCLUDE:
+❌ Search results or category pages
+❌ Navigation or account pages
+❌ Media files or resources
 
-EXCLUDE these patterns:
-❌ Search or category listing pages
-❌ Image/media files
-❌ Navigation or informational pages
+URL LIST:
+{urls_text}
 
-URLs to analyze:
-{json.dumps(chunk_urls, ensure_ascii=False)}
-
-Respond with valid JSON:
-{{"product_urls": ["url1", "url2", "url3"]}}"""
+Return only the numbers (1, 2, 3, etc.) of URLs that are product pages.
+Output as JSON: {{"product_url_numbers": [1, 5, 8, ...]}}"""
 
                 print(f"🤖 Sending chunk {chunk_num} ({len(chunk_urls)} URLs) to Gemini...")
                 print(f"🐛 DEBUG: Chunk prompt length: {len(prompt)} characters")
@@ -210,9 +217,9 @@ Respond with valid JSON:
                         )
                     )
                     
-                    # Handle safety filter issues (finish_reason=2)
+                    # Handle safety filter issues - if blocked, skip this chunk
                     if not response.candidates or len(response.candidates) == 0:
-                        print(f"⚠️ Chunk {chunk_num}: No candidates returned (likely safety filter)")
+                        print(f"⚠️ Chunk {chunk_num}: No candidates returned, skipping this chunk...")
                         continue
                         
                     candidate = response.candidates[0]
@@ -221,7 +228,7 @@ Respond with valid JSON:
                         continue
                     
                     if not response.text:
-                        print(f"⚠️ Chunk {chunk_num}: Empty response")
+                        print(f"⚠️ Chunk {chunk_num}: Empty response, skipping this chunk...")
                         continue
                         
                     response_text = response.text.strip()
@@ -238,7 +245,18 @@ Respond with valid JSON:
                         # Parse JSON
                         data = json.loads(response_text)
                         
-                        if isinstance(data, dict) and 'product_urls' in data:
+                        if isinstance(data, dict) and 'product_url_numbers' in data:
+                            # Get the URLs based on the returned numbers
+                            url_numbers = data['product_url_numbers']
+                            chunk_product_urls = []
+                            for num in url_numbers:
+                                if 1 <= num <= len(chunk_urls):
+                                    chunk_product_urls.append(chunk_urls[num - 1])  # Convert to 0-based index
+                            
+                            print(f"✅ Chunk {chunk_num}: Found {len(chunk_product_urls)} product URLs")
+                            all_product_urls.extend(chunk_product_urls)
+                        elif isinstance(data, dict) and 'product_urls' in data:
+                            # Fallback to old format if returned
                             chunk_product_urls = data['product_urls']
                             print(f"✅ Chunk {chunk_num}: Found {len(chunk_product_urls)} product URLs")
                             all_product_urls.extend(chunk_product_urls)

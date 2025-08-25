@@ -1,0 +1,7 @@
+# AMAZON Search Results
+# Site: amazon
+# Keyword: エリクシール
+# Search Date: 2025-08-25 18:14:25
+# Total URLs: 0
+# URLs extracted from markdown content:
+#==================================================
