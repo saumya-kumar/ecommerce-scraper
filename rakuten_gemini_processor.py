@@ -18,15 +18,22 @@ class RakutenGeminiProcessor:
         
         genai.configure(api_key=api_key)
         
-        # Use Gemini 2.5 Flash-Lite as specified in .env
+        # Use Gemini 2.5 Flash Lite as it's the working model
         self.model = genai.GenerativeModel('gemini-2.5-flash-lite')
         
-        # Processing configuration
-        self.chunk_size = 5  # Smaller chunks for better clarity and accuracy
-        self.delay_between_requests = 30  # 30 second delay between API calls
+        # Processing configuration optimized for enhanced, clean content
+        self.chunk_size = 5  # Increased to 5 as suggested - handles more products per chunk
+        self.delay_between_requests = 25  # Slightly reduced delay due to better content quality
         
-        # Prompt template
-        self.prompt_template = """You are an expert e-commerce data extractor. You will be given {num_products} separate product pages from Rakuten.
+        # Optimized prompt template for link-free, clean markdown content
+        self.prompt_template = """You are an expert e-commerce data extractor specializing in Japanese cosmetics and beauty products. 
+
+IMPORTANT CONTEXT:
+- You will receive {num_products} separate product pages from Rakuten/Amazon
+- The content has been DOUBLE-CLEANED: ALL links removed by advanced processing, navigation filtered out, only product content remains
+- Each product page contains PURE PRODUCT INFORMATION without any clickable links or distracting elements
+- The markdown has been processed with advanced scrolling and link removal to capture clean, focused content
+- Focus on the rich product details that are now clearly visible without link noise
 
 CRITICAL INSTRUCTIONS:
 1. Each product page is clearly marked with "=== PRODUCT X - URL: [url] ===" 
@@ -35,51 +42,75 @@ CRITICAL INSTRUCTIONS:
 4. Match each product to its specific URL
 5. Do NOT mix information between different products
 
-TASK: Extract product information from each product page separately.
+CONTENT QUALITY NOTES:
+- The markdown content is CLEAN (no navigation links, ads, or distractions)
+- Product information is COMPLETE (advanced crawling captured lazy-loaded content)
+- Text is FOCUSED (only product-related content remains)
+- Look for detailed product specifications, ingredients, descriptions, and pricing
 
 {markdown_content}
 
-For each product page, extract these fields (extract what you can find, use null only if truly not available):
-- Product Name: The main product title shown on that specific page [REQUIRED - must extract]
-- Product Description: Main product description from that page only [IMPORTANT - try to extract]
-- Price: The price shown on that specific page [IMPORTANT - look for ¥ or price info]
-- Release Date: Product release date if mentioned [can be null]
-- Volume/Size: Product size/volume information [look for ml, g, oz etc.]
-- Country of Origin: Manufacturing country [can be null]
-- Brand Name: Brand of the product [IMPORTANT - usually in title or header]
-- Brand Description: Description of the brand [can be null]
-- Full Ingredient List: Complete ingredients if available [extract if found]
-- New Feature Promotion: Any promotional features mentioned [can be null]
-- Marketing Materials: Marketing text or claims [can be null]
-- Packaging Information: Package details [can be null]
-- Web URL: Use the EXACT URL provided in the marker for that product [REQUIRED]
+EXTRACTION FIELDS (prioritize based on clean content available):
 
-IMPORTANT OUTPUT FORMAT:
-Return EXACTLY {num_products} products as a JSON array. Each product corresponds to one URL in order:
+**REQUIRED FIELDS** (must extract if available):
+- Product Name: The main product title (look for large headings, product titles)
+- Brand Name: Brand/manufacturer name (often in titles or prominently displayed)
+- Price: Current selling price (look for ¥ symbols, price displays)
+- Web URL: Use the EXACT URL provided in the marker for that product
+
+**HIGH PRIORITY FIELDS** (extract if clearly present):
+- Product Description: Main product description, benefits, features
+- Volume/Size: Product size/volume (ml, g, oz, pieces, etc.)
+- Full Ingredient List: Complete ingredients if listed (common for cosmetics)
+
+**ADDITIONAL FIELDS** (extract if found, null if not available):
+- Release Date: Product launch/release date if mentioned
+- Country of Origin: Manufacturing country (Made in Japan, etc.)
+- Brand Description: Information about the brand itself
+- New Feature Promotion: Special features, "NEW" labels, promotional text
+- Marketing Materials: Marketing claims, benefits, selling points
+- Packaging Information: Package details, container type, refillable, etc.
+
+EXTRACTION STRATEGY FOR CLEAN CONTENT:
+1. Look for clear product sections and headings
+2. Identify price information (¥ symbols, numerical prices)
+3. Find ingredient lists (often detailed for cosmetics)
+4. Extract size/volume information (numbers + units)
+5. Capture brand and product names from titles/headers
+6. Look for promotional text and marketing claims
+
+OUTPUT FORMAT:
+Return EXACTLY {num_products} products as a JSON array:
 
 [
   {{
-    "Product Name": "name from product 1",
-    "Product Description": "description from product 1", 
-    "Price": "price from product 1",
+    "Product Name": "complete product name from product 1",
+    "Product Description": "detailed description from product 1", 
+    "Price": "¥X,XXX or price from product 1",
     "Release Date": null,
-    "Volume/Size": "size from product 1",
-    "Country of Origin": "country from product 1",
-    "Brand Name": "brand from product 1",
-    "Brand Description": null,
-    "Full Ingredient List": "ingredients from product 1",
-    "New Feature Promotion": null,
-    "Marketing Materials": null,
-    "Packaging Information": null,
+    "Volume/Size": "XX ml/g/pieces from product 1",
+    "Country of Origin": "Japan/country from product 1",
+    "Brand Name": "brand name from product 1",
+    "Brand Description": "brand info from product 1 or null",
+    "Full Ingredient List": "complete ingredients from product 1 or null",
+    "New Feature Promotion": "promotional features from product 1 or null",
+    "Marketing Materials": "marketing text from product 1 or null",
+    "Packaging Information": "package details from product 1 or null",
     "Web URL": "exact_url_from_product_1_marker"
   }},
   {{
-    "Product Name": "name from product 2",
+    "Product Name": "complete product name from product 2",
     ...
   }}
 ]
 
-VALIDATION: The output array must have exactly {num_products} elements, matching the {num_products} product pages provided."""
+QUALITY ASSURANCE:
+- The clean content should make extraction easier and more accurate
+- Focus on the rich product details now clearly visible
+- Use the improved content quality to provide complete, detailed extractions
+- Validate that each product corresponds to its specific URL marker
+
+VALIDATION: Return exactly {num_products} products matching the {num_products} clean product pages provided."""
 
     def load_rakuten_data(self, file_path: str) -> List[Dict[str, Any]]:
         """Load data from rakuten.json file."""
@@ -93,29 +124,65 @@ VALIDATION: The output array must have exactly {num_products} elements, matching
             print(f"❌ Error loading file {file_path}: {str(e)}")
             return []
 
+    def remove_links_from_markdown(self, markdown_content: str) -> str:
+        """Remove all links from markdown content to clean it for Gemini processing."""
+        if not markdown_content:
+            return markdown_content
+        
+        import re
+        
+        # Remove markdown links: [text](url) -> text
+        markdown_content = re.sub(r'\[([^\]]*)\]\([^)]+\)', r'\1', markdown_content)
+        
+        # Remove markdown images: ![alt](url) -> (removed)
+        markdown_content = re.sub(r'!\[[^\]]*\]\([^)]+\)', '', markdown_content)
+        
+        # Remove bare URLs (http/https)
+        markdown_content = re.sub(r'https?://[^\s\)\]\n]+', '', markdown_content)
+        
+        # Remove reference-style links: [text][ref] -> text
+        markdown_content = re.sub(r'\[([^\]]*)\]\[[^\]]*\]', r'\1', markdown_content)
+        
+        # Remove reference definitions: [ref]: url
+        markdown_content = re.sub(r'^\s*\[[^\]]+\]:\s*.*$', '', markdown_content, flags=re.MULTILINE)
+        
+        # Clean up multiple whitespaces and empty lines
+        markdown_content = re.sub(r'\n\s*\n\s*\n', '\n\n', markdown_content)
+        markdown_content = re.sub(r' +', ' ', markdown_content)
+        
+        return markdown_content.strip()
+
     def create_chunk_prompt(self, product_chunk: List[Dict[str, Any]]) -> str:
-        """Create a prompt with markdown content from a chunk of products."""
+        """Create a prompt with clean, link-free markdown content from a chunk of products."""
         markdown_contents = []
         
         for i, product in enumerate(product_chunk, 1):
             url = product.get('url', 'Unknown URL')
             markdown = product.get('markdown_content', '')
             
+            # IMPORTANT: Remove all links from markdown content before processing
+            markdown = self.remove_links_from_markdown(markdown)
+            
             # Add very clear separator with product number and URL
             separator = "=" * 80
             chunk_header = f"\n{separator}\n=== PRODUCT {i} - URL: {url} ===\n{separator}\n"
             chunk_footer = f"\n{separator}\n=== END OF PRODUCT {i} ===\n{separator}\n"
             
-            # Limit markdown content to avoid overwhelming the model
-            if len(markdown) > 8000:  # Limit each product to ~8k characters
-                markdown = markdown[:8000] + "\n... [Content truncated for brevity] ..."
+            # Since content is now clean and link-free, we can be more generous with content length
+            # The enhanced scraper provides higher quality, more focused content
+            if len(markdown) > 12000:  # Increased from 8k to 12k due to better content quality
+                # Take the first part (which usually has the main product info)
+                markdown = markdown[:12000] + "\n... [Content truncated - main product information preserved] ..."
             
-            product_content = chunk_header + markdown + chunk_footer
+            # Add content quality indicator for Gemini
+            quality_note = "\n[NOTE: This content has been DOUBLE-PROCESSED - all links removed, navigation filtered, advanced crawling, pure product content optimized]\n"
+            
+            product_content = chunk_header + quality_note + markdown + chunk_footer
             markdown_contents.append(product_content)
         
         combined_content = "\n".join(markdown_contents)
         
-        # Use the template with dynamic placeholders
+        # Use the enhanced template with dynamic placeholders
         return self.prompt_template.format(
             num_products=len(product_chunk),
             markdown_content=combined_content

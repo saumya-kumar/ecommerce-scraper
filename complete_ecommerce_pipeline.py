@@ -82,10 +82,9 @@ class EcommercePipeline:
             # Start timing
             step_start = time.time()
             
-            # Run the script with proper Python environment
-            python_executable = r"C:/Users/NT-240007/ottomator-agents/crawl4AI-agent-v2 (branch-1-V1) - Part 2/venv/Scripts/python.exe"
+            # Run the script with current Python environment
             result = subprocess.run([
-                python_executable, script_name
+                sys.executable, script_name
             ], capture_output=False, text=True, cwd=os.getcwd())
             
             step_time = time.time() - step_start
