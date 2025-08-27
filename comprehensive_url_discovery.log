@@ -1,0 +1,160 @@
+2025-08-24 14:53:06,080 - ERROR - BASIC recursive crawling failed: CrawlerRunConfig.__init__() got an unexpected keyword argument 'extract_links'
+2025-08-24 14:53:08,337 - ERROR - STEALTH recursive crawling failed: CrawlerRunConfig.__init__() got an unexpected keyword argument 'extract_links'
+2025-08-24 14:53:10,667 - ERROR - UNDETECTED recursive crawling failed: CrawlerRunConfig.__init__() got an unexpected keyword argument 'extract_links'
+2025-08-24 16:33:34,028 - ERROR - BASIC parent crawling failed: CrawlerRunConfig.__init__() got an unexpected keyword argument 'extract_links'
+2025-08-24 16:33:35,052 - ERROR - STEALTH parent crawling failed: CrawlerRunConfig.__init__() got an unexpected keyword argument 'extract_links'
+2025-08-24 16:33:51,461 - ERROR - UNDETECTED parent crawling failed: CrawlerRunConfig.__init__() got an unexpected keyword argument 'extract_links'
+2025-08-24 17:42:42,608 - INFO - 🌐 Starting Enhanced URL Seeding Discovery...
+2025-08-24 17:42:42,608 - INFO - 🎯 Discovering URLs from 1 domains: ['https://www.city.chiyoda.lg.jp']
+2025-08-24 17:42:42,608 - INFO - 🗺️  Phase 1: Enhanced Sitemap Discovery
+2025-08-24 17:42:47,637 - INFO - 📍 https://www.city.chiyoda.lg.jp: Found 0 sitemaps at common locations
+2025-08-24 17:42:47,637 - INFO - 🗺️  https://www.city.chiyoda.lg.jp: Found 0 sitemap URLs
+2025-08-24 17:42:47,637 - INFO - 🚀 Phase 2: Ultra-High-Performance URL Seeding (Comprehensive Methods)
+2025-08-24 17:42:47,846 - INFO - 📄 https://www.city.chiyoda.lg.jp: Advanced sitemap discovery...
+2025-08-24 17:42:47,969 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:42:48,028 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap_index.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:42:48,052 - INFO - HTTP Request: HEAD http://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 301 Moved Permanently"
+2025-08-24 17:42:48,062 - INFO - HTTP Request: GET https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:42:52,870 - INFO - 📄 https://www.city.chiyoda.lg.jp: Sitemap pattern 1 found 0 URLs (0 new)
+2025-08-24 17:42:52,874 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:42:52,892 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap_index.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:42:52,898 - INFO - HTTP Request: HEAD http://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 301 Moved Permanently"
+2025-08-24 17:42:52,906 - INFO - HTTP Request: GET https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:42:57,883 - INFO - 📄 https://www.city.chiyoda.lg.jp: Sitemap pattern 2 found 0 URLs (0 new)
+2025-08-24 17:42:57,885 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:42:57,905 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap_index.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:42:57,984 - INFO - HTTP Request: HEAD http://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 301 Moved Permanently"
+2025-08-24 17:42:57,984 - INFO - HTTP Request: GET https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:02,883 - INFO - 📄 https://www.city.chiyoda.lg.jp: Sitemap pattern 3 found 0 URLs (0 new)
+2025-08-24 17:43:02,903 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:02,909 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap_index.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:02,933 - INFO - HTTP Request: HEAD http://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 301 Moved Permanently"
+2025-08-24 17:43:02,944 - INFO - HTTP Request: GET https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:07,898 - INFO - 📄 https://www.city.chiyoda.lg.jp: Sitemap pattern 4 found 0 URLs (0 new)
+2025-08-24 17:43:07,898 - INFO - 🤖 https://www.city.chiyoda.lg.jp: Gemini-adaptive Common Crawl discovery...
+2025-08-24 17:43:07,898 - INFO - 🤖 Analyzing https://www.city.chiyoda.lg.jp with Gemini to generate adaptive queries...
+2025-08-24 17:43:08,246 - WARNING - 🤖 Gemini query generation failed for https://www.city.chiyoda.lg.jp: 400 * GenerateContentRequest.model: unexpected model name format
+
+2025-08-24 17:43:08,246 - INFO - 🤖 Using 8 Gemini-generated queries for https://www.city.chiyoda.lg.jp
+2025-08-24 17:43:08,246 - INFO - [URL_SEEDING] Running 11 adaptive CC strategies
+2025-08-24 17:43:09,345 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:09,627 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:10,064 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:10,445 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:10,810 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:11,196 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:11,580 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:11,944 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:11,961 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:22,874 - INFO - [URL_SEEDING] Gemini-Gov-Service: 1001 URLs (1001 new)
+2025-08-24 17:43:22,874 - INFO - [URL_SEEDING] Gemini-Gov-Office: 1001 URLs (0 new)
+2025-08-24 17:43:22,876 - INFO - [URL_SEEDING] Gemini-Gov-Community: 1001 URLs (0 new)
+2025-08-24 17:43:22,876 - INFO - [URL_SEEDING] Gemini-Gov-News: 1001 URLs (0 new)
+2025-08-24 17:43:22,876 - INFO - [URL_SEEDING] Gemini-Gov-Registration: 1001 URLs (0 new)
+2025-08-24 17:43:22,876 - INFO - [URL_SEEDING] Gemini-Gov-Meeting: 1001 URLs (0 new)
+2025-08-24 17:43:22,876 - INFO - [URL_SEEDING] Gemini-Gov-Finance: 1001 URLs (0 new)
+2025-08-24 17:43:22,876 - INFO - [URL_SEEDING] Gemini-Unfiltered: 1001 URLs (0 new)
+2025-08-24 17:43:22,876 - INFO - [URL_SEEDING] CC-Unlimited: 1001 URLs (0 new)
+2025-08-24 17:43:22,876 - INFO - [URL_SEEDING] CC-LiveCheck: 449 URLs (0 new)
+2025-08-24 17:43:22,882 - INFO - [URL_SEEDING] CC-Metadata: 449 URLs (0 new)
+2025-08-24 17:43:22,882 - INFO - 🤖 https://www.city.chiyoda.lg.jp: Adaptive CC found 9907 total URLs (1001 unique)
+2025-08-24 17:43:22,882 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Advanced combined discovery...
+2025-08-24 17:43:29,206 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Combined strategy 1 found 1001 URLs (0 new)
+2025-08-24 17:43:29,458 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:29,548 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap_index.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:29,594 - INFO - HTTP Request: HEAD http://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 301 Moved Permanently"
+2025-08-24 17:43:29,612 - INFO - HTTP Request: GET https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:30,209 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-24 17:43:35,724 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Combined strategy 2 found 1194 URLs (193 new)
+2025-08-24 17:43:35,817 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:35,843 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap_index.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:35,903 - INFO - HTTP Request: HEAD http://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 301 Moved Permanently"
+2025-08-24 17:43:35,937 - INFO - HTTP Request: GET https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-24 17:43:41,502 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Combined strategy 3 found 304 URLs (0 new)
+2025-08-24 17:43:41,505 - INFO - � https://www.city.chiyoda.lg.jp: Subdomain discovery...
+2025-08-24 17:43:47,283 - INFO - 🌍 faq.city.chiyoda.lg.jp: Found 515 URLs (0 new)
+2025-08-24 17:43:52,481 - INFO - 🌍 culture-tech.city.chiyoda.lg.jp: Found 73 URLs (0 new)
+2025-08-24 17:43:59,301 - INFO - 🌍 www.city.chiyoda.lg.jp: Found 1001 URLs (0 new)
+2025-08-24 17:44:00,064 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.en.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 404 Not Found"
+2025-08-24 17:44:04,312 - INFO - 🌍 en.city.chiyoda.lg.jp: Found 0 URLs (0 new)
+2025-08-24 17:44:05,163 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.mobile.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 404 Not Found"
+2025-08-24 17:44:09,327 - INFO - 🌍 mobile.city.chiyoda.lg.jp: Found 0 URLs (0 new)
+2025-08-24 17:44:10,049 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.portal.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 404 Not Found"
+2025-08-24 17:44:14,322 - INFO - 🌍 portal.city.chiyoda.lg.jp: Found 0 URLs (0 new)
+2025-08-24 17:44:14,324 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Recursive link extraction...
+2025-08-24 17:44:14,324 - INFO - [URL_SEEDING] Extracting links from 50 discovered URLs
+2025-08-24 17:44:15,296 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Recursive extraction found 0 new URLs
+2025-08-24 17:44:30,451 - INFO - 🕒 https://www.city.chiyoda.lg.jp: Wayback Machine discovery...
+2025-08-24 17:44:30,451 - INFO - [URL_SEEDING] Querying Wayback Machine: http://web.archive.org/cdx/search/cdx?url=https://www.city.chiyoda.lg.jp/*&output=json&limit=5000
+2025-08-24 17:44:32,902 - INFO - 🕒 https://www.city.chiyoda.lg.jp: Wayback Machine found 1266 URLs (1261 new)
+2025-08-24 17:44:32,902 - INFO - 🎯 https://www.city.chiyoda.lg.jp: TOTAL DISCOVERED 2455 URLs using comprehensive methods
+2025-08-24 17:44:32,927 - ERROR - ❌ URL Discovery failed: [Errno 22] Invalid argument: 'url_seeding_results\\urls_https:\\www.city.chiyoda.lg.jp_20250824_174432.json'
+2025-08-26 13:02:38,668 - INFO - 🌐 Starting Enhanced URL Seeding Discovery...
+2025-08-26 13:02:38,668 - INFO - 🎯 Discovering URLs from 1 domains: ['https://www.city.chiyoda.lg.jp']
+2025-08-26 13:02:38,668 - INFO - 🗺️  Phase 1: Enhanced Sitemap Discovery
+2025-08-26 13:02:43,677 - INFO - 📍 https://www.city.chiyoda.lg.jp: Found 0 sitemaps at common locations
+2025-08-26 13:02:43,678 - INFO - 🗺️  https://www.city.chiyoda.lg.jp: Found 0 sitemap URLs
+2025-08-26 13:02:43,678 - INFO - 🚀 Phase 2: Ultra-High-Performance URL Seeding (Comprehensive Methods)
+2025-08-26 13:02:43,911 - INFO - 📄 https://www.city.chiyoda.lg.jp: Advanced sitemap discovery...
+2025-08-26 13:02:44,037 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-26 13:02:44,081 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap_index.xml "HTTP/1.1 404 Not Found"
+2025-08-26 13:02:44,120 - INFO - HTTP Request: HEAD http://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 301 Moved Permanently"
+2025-08-26 13:02:44,142 - INFO - HTTP Request: GET https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-26 13:02:48,943 - INFO - 📄 https://www.city.chiyoda.lg.jp: Sitemap pattern 1 found 0 URLs (0 new)
+2025-08-26 13:02:53,965 - INFO - 📄 https://www.city.chiyoda.lg.jp: Sitemap pattern 2 found 0 URLs (0 new)
+2025-08-26 13:02:58,986 - INFO - 📄 https://www.city.chiyoda.lg.jp: Sitemap pattern 3 found 0 URLs (0 new)
+2025-08-26 13:03:04,009 - INFO - 📄 https://www.city.chiyoda.lg.jp: Sitemap pattern 4 found 0 URLs (0 new)
+2025-08-26 13:03:04,009 - INFO - 🤖 https://www.city.chiyoda.lg.jp: Gemini-adaptive Common Crawl discovery...
+2025-08-26 13:03:04,010 - INFO - 🤖 Analyzing https://www.city.chiyoda.lg.jp with Gemini to generate adaptive queries...
+2025-08-26 13:03:04,291 - WARNING - 🤖 Gemini query generation failed for https://www.city.chiyoda.lg.jp: 400 * GenerateContentRequest.model: unexpected model name format
+
+2025-08-26 13:03:04,291 - INFO - 🤖 Using 8 Gemini-generated queries for https://www.city.chiyoda.lg.jp
+2025-08-26 13:03:04,291 - INFO - [URL_SEEDING] Running 11 adaptive CC strategies
+2025-08-26 13:03:05,117 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:05,480 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:05,780 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:06,148 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:06,552 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:06,934 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:07,315 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:07,709 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:08,266 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:21,819 - INFO - [URL_SEEDING] Gemini-Gov-Service: 1001 URLs (1001 new)
+2025-08-26 13:03:21,822 - INFO - [URL_SEEDING] Gemini-Gov-Office: 1001 URLs (0 new)
+2025-08-26 13:03:21,826 - INFO - [URL_SEEDING] Gemini-Gov-Community: 1001 URLs (0 new)
+2025-08-26 13:03:21,831 - INFO - [URL_SEEDING] Gemini-Gov-News: 1001 URLs (0 new)
+2025-08-26 13:03:21,832 - INFO - [URL_SEEDING] Gemini-Gov-Registration: 1001 URLs (0 new)
+2025-08-26 13:03:21,833 - INFO - [URL_SEEDING] Gemini-Gov-Meeting: 1001 URLs (0 new)
+2025-08-26 13:03:21,834 - INFO - [URL_SEEDING] Gemini-Gov-Finance: 1001 URLs (0 new)
+2025-08-26 13:03:21,835 - INFO - [URL_SEEDING] Gemini-Unfiltered: 1001 URLs (0 new)
+2025-08-26 13:03:21,837 - INFO - [URL_SEEDING] CC-Unlimited: 1001 URLs (0 new)
+2025-08-26 13:03:21,837 - INFO - [URL_SEEDING] CC-LiveCheck: 378 URLs (0 new)
+2025-08-26 13:03:21,838 - INFO - [URL_SEEDING] CC-Metadata: 378 URLs (0 new)
+2025-08-26 13:03:21,838 - INFO - 🤖 https://www.city.chiyoda.lg.jp: Adaptive CC found 9765 total URLs (1001 unique)
+2025-08-26 13:03:21,838 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Advanced combined discovery...
+2025-08-26 13:03:28,682 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Combined strategy 1 found 1001 URLs (0 new)
+2025-08-26 13:03:28,766 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-26 13:03:28,797 - INFO - HTTP Request: HEAD https://www.city.chiyoda.lg.jp/sitemap_index.xml "HTTP/1.1 404 Not Found"
+2025-08-26 13:03:28,874 - INFO - HTTP Request: HEAD http://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 301 Moved Permanently"
+2025-08-26 13:03:28,928 - INFO - HTTP Request: GET https://www.city.chiyoda.lg.jp/sitemap.xml "HTTP/1.1 404 Not Found"
+2025-08-26 13:03:30,481 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.www.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 200 OK"
+2025-08-26 13:03:38,808 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Combined strategy 2 found 1194 URLs (193 new)
+2025-08-26 13:03:44,553 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Combined strategy 3 found 304 URLs (0 new)
+2025-08-26 13:03:44,554 - INFO - � https://www.city.chiyoda.lg.jp: Subdomain discovery...
+2025-08-26 13:03:50,269 - INFO - 🌍 faq.city.chiyoda.lg.jp: Found 515 URLs (0 new)
+2025-08-26 13:03:55,484 - INFO - 🌍 culture-tech.city.chiyoda.lg.jp: Found 73 URLs (0 new)
+2025-08-26 13:04:02,617 - INFO - 🌍 www.city.chiyoda.lg.jp: Found 1001 URLs (0 new)
+2025-08-26 13:04:13,207 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.en.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 504 Gateway Time-out"
+2025-08-26 13:04:17,681 - INFO - 🌍 en.city.chiyoda.lg.jp: Found 0 URLs (0 new)
+2025-08-26 13:04:18,349 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.mobile.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 404 Not Found"
+2025-08-26 13:04:22,689 - INFO - 🌍 mobile.city.chiyoda.lg.jp: Found 0 URLs (0 new)
+2025-08-26 13:04:23,354 - INFO - HTTP Request: GET https://index.commoncrawl.org/CC-MAIN-2025-33-index?url=*.portal.city.chiyoda.lg.jp%2F*&output=json "HTTP/1.1 404 Not Found"
+2025-08-26 13:04:27,707 - INFO - 🌍 portal.city.chiyoda.lg.jp: Found 0 URLs (0 new)
+2025-08-26 13:04:27,708 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Recursive link extraction...
+2025-08-26 13:04:27,708 - INFO - [URL_SEEDING] Extracting links from 50 discovered URLs
+2025-08-26 13:04:29,162 - INFO - 🔗 https://www.city.chiyoda.lg.jp: Recursive extraction found 0 new URLs
+2025-08-26 13:04:29,396 - INFO - 🕒 https://www.city.chiyoda.lg.jp: Wayback Machine discovery...
+2025-08-26 13:04:29,396 - INFO - [URL_SEEDING] Querying Wayback Machine: http://web.archive.org/cdx/search/cdx?url=https://www.city.chiyoda.lg.jp/*&output=json&limit=5000
+2025-08-26 13:04:30,899 - INFO - 🕒 https://www.city.chiyoda.lg.jp: Wayback Machine found 1434 URLs (1429 new)
+2025-08-26 13:04:30,901 - INFO - 🎯 https://www.city.chiyoda.lg.jp: TOTAL DISCOVERED 2623 URLs using comprehensive methods
+2025-08-26 13:04:30,958 - ERROR - ❌ URL Discovery failed: [Errno 22] Invalid argument: 'url_seeding_results\\urls_https:\\www.city.chiyoda.lg.jp_20250826_130430.json'
